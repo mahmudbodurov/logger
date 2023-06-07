@@ -69,7 +69,7 @@ public class LogHandler {
     }
 
     private void recursiveFieldRead(LogField logField, Object parentObject, String parentParameterName, StringBuilder builder) throws IllegalAccessException {
-        if (logField == null || LOG_FIELD_DEEP_READ == logField.type()) {
+        if (logField != null && LOG_FIELD_DEEP_READ == logField.type()) {
             for (var field : parentObject.getClass().getDeclaredFields()) {
                 Object value = "";
                 var annotation = field.getAnnotation(Confidential.class);
